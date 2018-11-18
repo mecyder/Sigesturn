@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_Gestion_TurnosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Company">
+          <Key>
+            <PropertyRef Name="companyID" />
+          </Key>
+          <Property Name="companyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="companyName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="companyPhone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="companyAddress" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="companyEmail" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="companyLogoURL" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Configuration">
+          <Key>
+            <PropertyRef Name="configurationID" />
+          </Key>
+          <Property Name="configurationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="configurationColorBarHeader" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="configurationColorBarFooter" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="configurationBarHeaderTable" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="configurationColorTableBody" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="configurationMessage" Type="varchar(max)" Nullable="false" />
+          <Property Name="configurationImage" Type="varbinary(max)" />
+          <Property Name="configurationVideoURL" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Persons">
+          <Key>
+            <PropertyRef Name="personID" />
+          </Key>
+          <Property Name="personID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personNames" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="personLastName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="personFullName" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="personPhone" Type="varchar" MaxLength="11" />
+          <Property Name="personEmail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="personaAdress" Type="varchar" MaxLength="500" />
+          <Property Name="personNoDocument" Type="varchar" MaxLength="11" />
+          <Property Name="personDocumentTyppe" Type="int" />
+          <Property Name="createOn" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Positions">
+          <Key>
+            <PropertyRef Name="positionID" />
+          </Key>
+          <Property Name="positionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="positionDescription" Type="varchar" MaxLength="50" />
+          <Property Name="positionstate" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Tbl_Services">
+          <Key>
+            <PropertyRef Name="serviceID" />
+          </Key>
+          <Property Name="serviceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serviceDescriotion" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="createOn" Type="date" Nullable="false" />
+          <Property Name="serviceState" Type="bit" Nullable="false" />
+          <Property Name="serviceUnitPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_turn_position">
+          <Key>
+            <PropertyRef Name="turn_positionID" />
+          </Key>
+          <Property Name="turn_positionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="turnID" Type="int" Nullable="false" />
+          <Property Name="positionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Turns">
+          <Key>
+            <PropertyRef Name="turnID" />
+          </Key>
+          <Property Name="turnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description_Turn" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DB_Gestion_TurnosModelStoreContainer">
+          <EntitySet Name="Tbl_Company" EntityType="Self.Tbl_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Configuration" EntityType="Self.Tbl_Configuration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Persons" EntityType="Self.Tbl_Persons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Positions" EntityType="Self.Tbl_Positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Services" EntityType="Self.Tbl_Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_turn_position" EntityType="Self.tbl_turn_position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Turns" EntityType="Self.Tbl_Turns" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_Gestion_TurnosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Persons">
+          <Key>
+            <PropertyRef Name="personID" />
+          </Key>
+          <Property Name="personID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personNames" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="personLastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="personFullName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="personPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="personEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="personaAdress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="personNoDocument" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="personDocumentTyppe" Type="Int32" />
+          <Property Name="createOn" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Tbl_Positions">
+          <Key>
+            <PropertyRef Name="positionID" />
+          </Key>
+          <Property Name="positionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="positionDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="positionstate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Services">
+          <Key>
+            <PropertyRef Name="serviceID" />
+          </Key>
+          <Property Name="serviceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serviceDescriotion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="serviceState" Type="Boolean" Nullable="false" />
+          <Property Name="serviceUnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_turn_position">
+          <Key>
+            <PropertyRef Name="turn_positionID" />
+          </Key>
+          <Property Name="turn_positionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="turnID" Type="Int32" Nullable="false" />
+          <Property Name="positionID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Turns">
+          <Key>
+            <PropertyRef Name="turnID" />
+          </Key>
+          <Property Name="turnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description_Turn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DB_Gestion_TurnosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Persons" EntityType="Self.Tbl_Persons" />
+          <EntitySet Name="Tbl_Positions" EntityType="Self.Tbl_Positions" />
+          <EntitySet Name="Tbl_Services" EntityType="Self.Tbl_Services" />
+          <EntitySet Name="tbl_turn_position" EntityType="Self.tbl_turn_position" />
+          <EntitySet Name="Tbl_Turns" EntityType="Self.Tbl_Turns" />
+          <EntitySet Name="Tbl_Company" EntityType="DB_Gestion_TurnosModel.Tbl_Company" />
+          <EntitySet Name="Tbl_Configuration" EntityType="DB_Gestion_TurnosModel.Tbl_Configuration" />
+        </EntityContainer>
+        <EntityType Name="Tbl_Company">
+          <Key>
+            <PropertyRef Name="companyID" />
+          </Key>
+          <Property Name="companyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="companyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="companyPhone" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="companyAddress" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="companyEmail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="companyLogoURL" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Configuration">
+          <Key>
+            <PropertyRef Name="configurationID" />
+          </Key>
+          <Property Name="configurationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="configurationColorBarHeader" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configurationColorBarFooter" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configurationBarHeaderTable" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configurationColorTableBody" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configurationMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="configurationImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="configurationVideoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_Gestion_TurnosModelStoreContainer" CdmEntityContainer="DB_Gestion_TurnosEntities">
+          <EntitySetMapping Name="Tbl_Persons">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Persons">
+              <MappingFragment StoreEntitySet="Tbl_Persons">
+                <ScalarProperty Name="personID" ColumnName="personID" />
+                <ScalarProperty Name="personNames" ColumnName="personNames" />
+                <ScalarProperty Name="personLastName" ColumnName="personLastName" />
+                <ScalarProperty Name="personFullName" ColumnName="personFullName" />
+                <ScalarProperty Name="personPhone" ColumnName="personPhone" />
+                <ScalarProperty Name="personEmail" ColumnName="personEmail" />
+                <ScalarProperty Name="personaAdress" ColumnName="personaAdress" />
+                <ScalarProperty Name="personNoDocument" ColumnName="personNoDocument" />
+                <ScalarProperty Name="personDocumentTyppe" ColumnName="personDocumentTyppe" />
+                <ScalarProperty Name="createOn" ColumnName="createOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Positions">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Positions">
+              <MappingFragment StoreEntitySet="Tbl_Positions">
+                <ScalarProperty Name="positionID" ColumnName="positionID" />
+                <ScalarProperty Name="positionDescription" ColumnName="positionDescription" />
+                <ScalarProperty Name="positionstate" ColumnName="positionstate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Services">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Services">
+              <MappingFragment StoreEntitySet="Tbl_Services">
+                <ScalarProperty Name="serviceID" ColumnName="serviceID" />
+                <ScalarProperty Name="serviceDescriotion" ColumnName="serviceDescriotion" />
+                <ScalarProperty Name="createOn" ColumnName="createOn" />
+                <ScalarProperty Name="serviceState" ColumnName="serviceState" />
+                <ScalarProperty Name="serviceUnitPrice" ColumnName="serviceUnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_turn_position">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.tbl_turn_position">
+              <MappingFragment StoreEntitySet="tbl_turn_position">
+                <ScalarProperty Name="turn_positionID" ColumnName="turn_positionID" />
+                <ScalarProperty Name="turnID" ColumnName="turnID" />
+                <ScalarProperty Name="positionID" ColumnName="positionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Turns">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Turns">
+              <MappingFragment StoreEntitySet="Tbl_Turns">
+                <ScalarProperty Name="turnID" ColumnName="turnID" />
+                <ScalarProperty Name="description_Turn" ColumnName="description_Turn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Company">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Company">
+              <MappingFragment StoreEntitySet="Tbl_Company">
+                <ScalarProperty Name="companyLogoURL" ColumnName="companyLogoURL" />
+                <ScalarProperty Name="companyEmail" ColumnName="companyEmail" />
+                <ScalarProperty Name="companyAddress" ColumnName="companyAddress" />
+                <ScalarProperty Name="companyPhone" ColumnName="companyPhone" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="companyID" ColumnName="companyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Configuration">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Configuration">
+              <MappingFragment StoreEntitySet="Tbl_Configuration">
+                <ScalarProperty Name="configurationVideoURL" ColumnName="configurationVideoURL" />
+                <ScalarProperty Name="configurationImage" ColumnName="configurationImage" />
+                <ScalarProperty Name="configurationMessage" ColumnName="configurationMessage" />
+                <ScalarProperty Name="configurationColorTableBody" ColumnName="configurationColorTableBody" />
+                <ScalarProperty Name="configurationBarHeaderTable" ColumnName="configurationBarHeaderTable" />
+                <ScalarProperty Name="configurationColorBarFooter" ColumnName="configurationColorBarFooter" />
+                <ScalarProperty Name="configurationColorBarHeader" ColumnName="configurationColorBarHeader" />
+                <ScalarProperty Name="configurationID" ColumnName="configurationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
