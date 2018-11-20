@@ -80,6 +80,13 @@ namespace DAL
             return GetMaxId > 0 ? GetMaxId : 0;
         }
 
+        public TEntities Last<TEntities>(Func<TEntities, bool> condition) where TEntities : class
+        {
+            var GetMaxId = _db.Set<TEntities>().DefaultIfEmpty().FirstOrDefault(condition);
+
+            return GetMaxId;
+        }
+
         public bool update<TEntity>(TEntity toUpdate) where TEntity : class
         {
             try

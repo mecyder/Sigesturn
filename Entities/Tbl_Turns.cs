@@ -16,6 +16,7 @@ namespace Entities
     {
         public int turnID { get; set; }
         public string description_Turn { get; set; }
-        public DateTime createOn { get; set; }
+        public Nullable<System.DateTime> createOn { get; set; }
+        public Nullable<bool> status { get; set; }
     }
 }

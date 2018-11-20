@@ -52,6 +52,7 @@
   <ItemGroup>
     <None Include="..\Entities\Tbl_Company.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
     </None>
     <None Include="..\Entities\Tbl_Configuration.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
@@ -64,6 +65,7 @@
     </None>
     <None Include="..\Entities\Tbl_Services.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
     </None>
     <None Include="..\Entities\Tbl_Turns.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
@@ -80,11 +82,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SIGESTURNMODEL.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SIGESTURNMODEL.cs">
+    <None Include="SIGESTURNMODEL.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="SIGESTURNMODEL.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,9 +121,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="..\Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{4475e0c7-374d-4604-92bd-187952027ac2}</Project>

@@ -20,6 +20,5 @@ namespace Entities
         public bool serviceState { get; set; }
         public decimal serviceUnitPrice { get; set; }
         public string servicesSgila { get; set; }
-
     }
 }

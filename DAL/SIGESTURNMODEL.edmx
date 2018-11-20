@@ -15,17 +15,18 @@
           <Property Name="companyAddress" Type="varchar" MaxLength="400" Nullable="false" />
           <Property Name="companyEmail" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="companyLogoURL" Type="varbinary(max)" />
+          <Property Name="configurationID" Type="int" />
         </EntityType>
         <EntityType Name="Tbl_Configuration">
           <Key>
             <PropertyRef Name="configurationID" />
           </Key>
           <Property Name="configurationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="configurationColorBarHeader" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="configurationColorBarFooter" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="configurationBarHeaderTable" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="configurationColorTableBody" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="configurationMessage" Type="varchar(max)" Nullable="false" />
+          <Property Name="configurationColorBarHeader" Type="varchar" MaxLength="50" />
+          <Property Name="configurationColorBarFooter" Type="varchar" MaxLength="50" />
+          <Property Name="configurationBarHeaderTable" Type="varchar" MaxLength="50" />
+          <Property Name="configurationColorTableBody" Type="varchar" MaxLength="50" />
+          <Property Name="configurationMessage" Type="varchar(max)" />
           <Property Name="configurationImage" Type="varbinary(max)" />
           <Property Name="configurationVideoURL" Type="varchar(max)" />
         </EntityType>
@@ -61,6 +62,7 @@
           <Property Name="createOn" Type="date" Nullable="false" />
           <Property Name="serviceState" Type="bit" Nullable="false" />
           <Property Name="serviceUnitPrice" Type="money" Nullable="false" />
+          <Property Name="servicesSgila" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="tbl_turn_position">
           <Key>
@@ -76,6 +78,8 @@
           </Key>
           <Property Name="turnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="description_Turn" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="createOn" Type="date" />
+          <Property Name="status" Type="bit" />
         </EntityType>
         <EntityContainer Name="DB_Gestion_TurnosModelStoreContainer">
           <EntitySet Name="Tbl_Company" EntityType="Self.Tbl_Company" Schema="dbo" store:Type="Tables" />
@@ -122,6 +126,7 @@
           <Property Name="createOn" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="serviceState" Type="Boolean" Nullable="false" />
           <Property Name="serviceUnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="servicesSgila" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_turn_position">
           <Key>
@@ -137,6 +142,8 @@
           </Key>
           <Property Name="turnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description_Turn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createOn" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="DB_Gestion_TurnosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tbl_Persons" EntityType="Self.Tbl_Persons" />
@@ -157,17 +164,18 @@
           <Property Name="companyAddress" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="companyEmail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="companyLogoURL" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="configurationID" Type="Int32" />
         </EntityType>
         <EntityType Name="Tbl_Configuration">
           <Key>
             <PropertyRef Name="configurationID" />
           </Key>
           <Property Name="configurationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="configurationColorBarHeader" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="configurationColorBarFooter" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="configurationBarHeaderTable" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="configurationColorTableBody" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="configurationMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="configurationColorBarHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configurationColorBarFooter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configurationBarHeaderTable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configurationColorTableBody" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configurationMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="configurationImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="configurationVideoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -205,6 +213,7 @@
           <EntitySetMapping Name="Tbl_Services">
             <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Services">
               <MappingFragment StoreEntitySet="Tbl_Services">
+                <ScalarProperty Name="servicesSgila" ColumnName="servicesSgila" />
                 <ScalarProperty Name="serviceID" ColumnName="serviceID" />
                 <ScalarProperty Name="serviceDescriotion" ColumnName="serviceDescriotion" />
                 <ScalarProperty Name="createOn" ColumnName="createOn" />
@@ -225,6 +234,8 @@
           <EntitySetMapping Name="Tbl_Turns">
             <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Turns">
               <MappingFragment StoreEntitySet="Tbl_Turns">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="createOn" ColumnName="createOn" />
                 <ScalarProperty Name="turnID" ColumnName="turnID" />
                 <ScalarProperty Name="description_Turn" ColumnName="description_Turn" />
               </MappingFragment>
@@ -233,6 +244,7 @@
           <EntitySetMapping Name="Tbl_Company">
             <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Company">
               <MappingFragment StoreEntitySet="Tbl_Company">
+                <ScalarProperty Name="configurationID" ColumnName="configurationID" />
                 <ScalarProperty Name="companyLogoURL" ColumnName="companyLogoURL" />
                 <ScalarProperty Name="companyEmail" ColumnName="companyEmail" />
                 <ScalarProperty Name="companyAddress" ColumnName="companyAddress" />

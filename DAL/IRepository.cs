@@ -17,5 +17,7 @@ namespace DAL
         List<TEntities> GetAll<TEntities>(Expression<Func<TEntities, bool>> condition = null) where TEntities : class;
 
         int Count<TEntities>(Func<TEntities, int> columnSelector) where TEntities : class;
+
+        TEntities Last<TEntities>(Func<TEntities, bool> columnSelector) where TEntities : class;
     }
 }

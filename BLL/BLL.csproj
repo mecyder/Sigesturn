@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="asingTurnToEmploye.cs" />
     <Compile Include="companyLogic.cs" />
     <Compile Include="configuration.cs" />
     <Compile Include="services.cs" />

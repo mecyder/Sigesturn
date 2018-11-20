@@ -2,7 +2,6 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace BLL
 {
@@ -15,18 +14,16 @@ namespace BLL
             {
                 var objServices = repository.retrieve<Tbl_Services>(x => x.serviceID == Type);
                 int lastTurn = retrieveLastNumberOfTurn();
-                string turnPlusSigle = objServices.servicesSgila + lastTurn.ToString();
+                DateTime? dayRegisterLastTurn = LastTurnOfDay().createOn;
+                string turnPlusSigle = objServices.servicesSgila + (dayRegisterLastTurn == null ? 1 : lastTurn + 1);
+
                 var result = repository.create<Tbl_Turns>(new Tbl_Turns
                 {
-                    description_Turn = objServices.serviceDescriotion,
-                    turnID = lastTurn + 1
-                });
-                if (result)
-                {
-                    Thread task = new Thread(new ParameterizedThreadStart(talk.talkin));
-                    task.Start(turnPlusSigle);
-                }
+                    description_Turn = turnPlusSigle,
 
+                    createOn = DateTime.Today.Date,
+                    status = true
+                });
                 return result;
             }
         }
@@ -45,6 +42,17 @@ namespace BLL
             using (var repository = RepositoryFactory.CreateRepository())
             {
                 return repository.Count<Tbl_Turns>(x => x.turnID);
+            }
+        }
+
+        public Tbl_Turns LastTurnOfDay()
+        {
+            using (var repository = RepositoryFactory.CreateRepository())
+            {
+                DateTime toDay = DateTime.Today.Date;
+
+                var result = repository.retrieve<Tbl_Turns>(x => x.createOn == toDay);
+                return result == null ? new Tbl_Turns() : result;
             }
         }
     }

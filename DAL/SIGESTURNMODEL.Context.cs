@@ -9,9 +9,9 @@
 
 namespace DAL
 {
-    using Entities;
     using System;
     using System.Data.Entity;
+    using Entities;
     using System.Data.Entity.Infrastructure;
     
     public partial class DB_Gestion_TurnosEntities : DbContext

@@ -20,5 +20,6 @@ namespace Entities
         public string companyAddress { get; set; }
         public string companyEmail { get; set; }
         public byte[] companyLogoURL { get; set; }
+        public Nullable<int> configurationID { get; set; }
     }
 }
