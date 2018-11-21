@@ -29,6 +29,7 @@
           <Property Name="configurationMessage" Type="varchar(max)" />
           <Property Name="configurationImage" Type="varbinary(max)" />
           <Property Name="configurationVideoURL" Type="varchar(max)" />
+          <Property Name="companyID" Type="int" />
         </EntityType>
         <EntityType Name="Tbl_Persons">
           <Key>
@@ -44,6 +45,7 @@
           <Property Name="personNoDocument" Type="varchar" MaxLength="11" />
           <Property Name="personDocumentTyppe" Type="int" />
           <Property Name="createOn" Type="date" Nullable="false" />
+          <Property Name="personBirthdate" Type="date" />
         </EntityType>
         <EntityType Name="Tbl_Positions">
           <Key>
@@ -52,6 +54,13 @@
           <Property Name="positionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="positionDescription" Type="varchar" MaxLength="50" />
           <Property Name="positionstate" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Rols">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roleDescription" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_Services">
           <Key>
@@ -71,6 +80,7 @@
           <Property Name="turn_positionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="turnID" Type="int" Nullable="false" />
           <Property Name="positionID" Type="int" Nullable="false" />
+          <Property Name="createOn" Type="date" />
         </EntityType>
         <EntityType Name="Tbl_Turns">
           <Key>
@@ -81,14 +91,36 @@
           <Property Name="createOn" Type="date" />
           <Property Name="status" Type="bit" />
         </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userUsername" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="createOn" Type="date" Nullable="false" />
+          <Property Name="idPerson" Type="int" />
+          <Property Name="idCompany" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_user_rols">
+          <Key>
+            <PropertyRef Name="userRoleID" />
+          </Key>
+          <Property Name="userRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roleID" Type="int" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="DB_Gestion_TurnosModelStoreContainer">
           <EntitySet Name="Tbl_Company" EntityType="Self.Tbl_Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Configuration" EntityType="Self.Tbl_Configuration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Persons" EntityType="Self.Tbl_Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Positions" EntityType="Self.Tbl_Positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Rols" EntityType="Self.tbl_Rols" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Services" EntityType="Self.Tbl_Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_turn_position" EntityType="Self.tbl_turn_position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Turns" EntityType="Self.Tbl_Turns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_user_rols" EntityType="Self.tbl_user_rols" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -108,6 +140,7 @@
           <Property Name="personNoDocument" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="personDocumentTyppe" Type="Int32" />
           <Property Name="createOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="personBirthdate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Tbl_Positions">
           <Key>
@@ -135,6 +168,7 @@
           <Property Name="turn_positionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="turnID" Type="Int32" Nullable="false" />
           <Property Name="positionID" Type="Int32" Nullable="false" />
+          <Property Name="createOn" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Tbl_Turns">
           <Key>
@@ -153,6 +187,9 @@
           <EntitySet Name="Tbl_Turns" EntityType="Self.Tbl_Turns" />
           <EntitySet Name="Tbl_Company" EntityType="DB_Gestion_TurnosModel.Tbl_Company" />
           <EntitySet Name="Tbl_Configuration" EntityType="DB_Gestion_TurnosModel.Tbl_Configuration" />
+          <EntitySet Name="tbl_Rols" EntityType="DB_Gestion_TurnosModel.tbl_Rols" />
+          <EntitySet Name="tbl_User" EntityType="DB_Gestion_TurnosModel.tbl_User" />
+          <EntitySet Name="tbl_user_rols" EntityType="DB_Gestion_TurnosModel.tbl_user_rols" />
         </EntityContainer>
         <EntityType Name="Tbl_Company">
           <Key>
@@ -178,6 +215,33 @@
           <Property Name="configurationMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="configurationImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="configurationVideoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="companyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Rols">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="createOn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idPerson" Type="Int32" />
+          <Property Name="idCompany" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_user_rols">
+          <Key>
+            <PropertyRef Name="userRoleID" />
+          </Key>
+          <Property Name="userRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleID" Type="Int32" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -188,6 +252,7 @@
           <EntitySetMapping Name="Tbl_Persons">
             <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Persons">
               <MappingFragment StoreEntitySet="Tbl_Persons">
+                <ScalarProperty Name="personBirthdate" ColumnName="personBirthdate" />
                 <ScalarProperty Name="personID" ColumnName="personID" />
                 <ScalarProperty Name="personNames" ColumnName="personNames" />
                 <ScalarProperty Name="personLastName" ColumnName="personLastName" />
@@ -225,6 +290,7 @@
           <EntitySetMapping Name="tbl_turn_position">
             <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.tbl_turn_position">
               <MappingFragment StoreEntitySet="tbl_turn_position">
+                <ScalarProperty Name="createOn" ColumnName="createOn" />
                 <ScalarProperty Name="turn_positionID" ColumnName="turn_positionID" />
                 <ScalarProperty Name="turnID" ColumnName="turnID" />
                 <ScalarProperty Name="positionID" ColumnName="positionID" />
@@ -257,6 +323,7 @@
           <EntitySetMapping Name="Tbl_Configuration">
             <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.Tbl_Configuration">
               <MappingFragment StoreEntitySet="Tbl_Configuration">
+                <ScalarProperty Name="companyID" ColumnName="companyID" />
                 <ScalarProperty Name="configurationVideoURL" ColumnName="configurationVideoURL" />
                 <ScalarProperty Name="configurationImage" ColumnName="configurationImage" />
                 <ScalarProperty Name="configurationMessage" ColumnName="configurationMessage" />
@@ -265,6 +332,35 @@
                 <ScalarProperty Name="configurationColorBarFooter" ColumnName="configurationColorBarFooter" />
                 <ScalarProperty Name="configurationColorBarHeader" ColumnName="configurationColorBarHeader" />
                 <ScalarProperty Name="configurationID" ColumnName="configurationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Rols">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.tbl_Rols">
+              <MappingFragment StoreEntitySet="tbl_Rols">
+                <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="idCompany" ColumnName="idCompany" />
+                <ScalarProperty Name="idPerson" ColumnName="idPerson" />
+                <ScalarProperty Name="createOn" ColumnName="createOn" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="userUsername" ColumnName="userUsername" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user_rols">
+            <EntityTypeMapping TypeName="DB_Gestion_TurnosModel.tbl_user_rols">
+              <MappingFragment StoreEntitySet="tbl_user_rols">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
+                <ScalarProperty Name="userRoleID" ColumnName="userRoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entities
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
@@ -24,5 +24,6 @@ namespace Entities
         public string personNoDocument { get; set; }
         public Nullable<int> personDocumentTyppe { get; set; }
         public System.DateTime createOn { get; set; }
+        public Nullable<System.DateTime> personBirthdate { get; set; }
     }
 }

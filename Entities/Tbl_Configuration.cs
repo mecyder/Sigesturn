@@ -22,5 +22,6 @@ namespace Entities
         public string configurationMessage { get; set; }
         public byte[] configurationImage { get; set; }
         public string configurationVideoURL { get; set; }
+        public Nullable<int> companyID { get; set; }
     }
 }

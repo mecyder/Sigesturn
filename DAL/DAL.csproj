@@ -56,12 +56,19 @@
     </None>
     <None Include="..\Entities\Tbl_Configuration.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
     </None>
     <None Include="..\Entities\Tbl_Persons.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
     </None>
     <None Include="..\Entities\Tbl_Positions.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
+    </None>
+    <None Include="..\Entities\tbl_Rols.cs">
+      <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
     </None>
     <None Include="..\Entities\Tbl_Services.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
@@ -69,9 +76,19 @@
     </None>
     <None Include="..\Entities\Tbl_Turns.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
     </None>
     <None Include="..\Entities\tbl_turn_position.cs">
       <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
+    </None>
+    <None Include="..\Entities\tbl_User.cs">
+      <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
+    </None>
+    <None Include="..\Entities\tbl_user_rols.cs">
+      <DependentUpon>SIGESTURNMODEL.tt</DependentUpon>
+      <CustomToolNamespace>Entities</CustomToolNamespace>
     </None>
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,7 +138,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="..\Entities\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{4475e0c7-374d-4604-92bd-187952027ac2}</Project>

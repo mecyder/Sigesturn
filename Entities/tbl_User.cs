@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Entities
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_Services
+    public partial class tbl_User
     {
-        public int serviceID { get; set; }
-        public string serviceDescriotion { get; set; }
+        public int userID { get; set; }
+        public string userUsername { get; set; }
+        public string userPassword { get; set; }
         public System.DateTime createOn { get; set; }
-        public bool serviceState { get; set; }
-        public decimal serviceUnitPrice { get; set; }
-        public string servicesSgila { get; set; }
+        public Nullable<int> idPerson { get; set; }
+        public Nullable<int> idCompany { get; set; }
     }
 }

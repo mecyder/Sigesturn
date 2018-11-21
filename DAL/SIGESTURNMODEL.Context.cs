@@ -9,9 +9,9 @@
 
 namespace DAL
 {
+    using Entities;
     using System;
     using System.Data.Entity;
-    using Entities;
     using System.Data.Entity.Infrastructure;
     
     public partial class DB_Gestion_TurnosEntities : DbContext
@@ -33,5 +33,8 @@ namespace DAL
         public virtual DbSet<Tbl_Turns> Tbl_Turns { get; set; }
         public virtual DbSet<Tbl_Company> Tbl_Company { get; set; }
         public virtual DbSet<Tbl_Configuration> Tbl_Configuration { get; set; }
+        public virtual DbSet<tbl_Rols> tbl_Rols { get; set; }
+        public virtual DbSet<tbl_User> tbl_User { get; set; }
+        public virtual DbSet<tbl_user_rols> tbl_user_rols { get; set; }
     }
 }

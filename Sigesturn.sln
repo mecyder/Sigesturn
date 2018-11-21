@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Requestclient", "Requestclient\Requestclient.csproj", "{9CF41EBE-D685-426F-94BF-4D80468C5CAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security", "Security\Security.csproj", "{489824CE-1328-496D-8123-7310404F9F2A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{9CF41EBE-D685-426F-94BF-4D80468C5CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF41EBE-D685-426F-94BF-4D80468C5CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CF41EBE-D685-426F-94BF-4D80468C5CAC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{489824CE-1328-496D-8123-7310404F9F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{489824CE-1328-496D-8123-7310404F9F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{489824CE-1328-496D-8123-7310404F9F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{489824CE-1328-496D-8123-7310404F9F2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -52,6 +52,7 @@
     <Compile Include="asingTurnToEmploye.cs" />
     <Compile Include="companyLogic.cs" />
     <Compile Include="configuration.cs" />
+    <Compile Include="Security.cs" />
     <Compile Include="services.cs" />
     <Compile Include="talk.cs" />
     <Compile Include="Turns.cs" />

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entities
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
@@ -17,5 +17,6 @@ namespace Entities
         public int turn_positionID { get; set; }
         public int turnID { get; set; }
         public int positionID { get; set; }
+        public Nullable<System.DateTime> createOn { get; set; }
     }
 }

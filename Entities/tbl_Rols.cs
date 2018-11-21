@@ -12,13 +12,9 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_Services
+    public partial class tbl_Rols
     {
-        public int serviceID { get; set; }
-        public string serviceDescriotion { get; set; }
-        public System.DateTime createOn { get; set; }
-        public bool serviceState { get; set; }
-        public decimal serviceUnitPrice { get; set; }
-        public string servicesSgila { get; set; }
+        public int roleID { get; set; }
+        public string roleDescription { get; set; }
     }
 }
