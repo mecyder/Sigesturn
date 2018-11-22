@@ -14,8 +14,9 @@ namespace BLL
             {
                 var objServices = repository.retrieve<Tbl_Services>(x => x.serviceID == Type);
                 int lastTurn = retrieveLastNumberOfTurn();
-                DateTime? dayRegisterLastTurn = LastTurnOfDay().createOn;
-                string turnPlusSigle = objServices.servicesSgila + (dayRegisterLastTurn == null ? 1 : lastTurn + 1);
+                var lastTurns = LastTurnOfDay(objServices.servicesSgila.Substring(0, 1));
+                DateTime? dayRegisterLastTurn = lastTurns.createOn;
+                string turnPlusSigle = objServices.servicesSgila + (dayRegisterLastTurn == null ? 1 : lastTurns.turnID + 1);
 
                 var result = repository.create<Tbl_Turns>(new Tbl_Turns
                 {
@@ -45,13 +46,13 @@ namespace BLL
             }
         }
 
-        public Tbl_Turns LastTurnOfDay()
+        public Tbl_Turns LastTurnOfDay(string initials)
         {
             using (var repository = RepositoryFactory.CreateRepository())
             {
                 DateTime toDay = DateTime.Today.Date;
 
-                var result = repository.retrieve<Tbl_Turns>(x => x.createOn == toDay);
+                var result = repository.retrieve<Tbl_Turns>(x => x.createOn == toDay && x.description_Turn.StartsWith(initials));
                 return result == null ? new Tbl_Turns() : result;
             }
         }

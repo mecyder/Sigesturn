@@ -1,6 +1,8 @@
 ﻿using BLL;
 using Entities;
 using System;
+using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace Requestclient
@@ -9,6 +11,7 @@ namespace Requestclient
     {
         private asingTurnToEmploye asingTurn = null;
         private Tbl_Turns turn = null;
+        private HttpWebRequest req = null;
 
         public Form1()
         {
@@ -20,6 +23,9 @@ namespace Requestclient
         private void button1_Click(object sender, EventArgs e)
         {
             callNextTurn();
+            var request = (HttpWebRequest)WebRequest.Create("http://localhost:63275/Display/listOfTurns");
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
         }
 
         private void callNextTurn()
